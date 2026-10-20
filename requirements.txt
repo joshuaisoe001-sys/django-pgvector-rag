@@ -1,0 +1,7 @@
+Django==6.1.2
+djangorestframework==3.18.3
+psycopg[binary]==3.3.6
+pgvector==0.5.1
+anthropic==1.15.0
+httpx2==2.15.1
+pypdf==6.21.1

@@ -1,0 +1,20 @@
+[project]
+name = "django-pgvector-rag"
+version = "0.1.0"
+description = "Ask questions about your documents: Django REST Framework, PostgreSQL pgvector and Claude with citations."
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 130
+target-version = "py312"
+extend-exclude = ["knowledge/migrations"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "DJ"]
+# Line length is the formatter's job; long prose strings are left as written.
+ignore = ["E501"]

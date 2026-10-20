@@ -1,0 +1,56 @@
+{% load static %}<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document Q&amp;A</title>
+  <link rel="stylesheet" href="{% static 'knowledge/app.css' %}">
+</head>
+<body>
+  <header class="bar">
+    <strong>Document Q&amp;A</strong>
+    <span class="muted">Signed in as {{ request.user.get_username }} · <a href="{% url 'admin:index' %}">Admin</a></span>
+  </header>
+
+  <main class="layout">
+    <aside class="panel" aria-labelledby="collections-heading">
+      <h2 id="collections-heading">Collections</h2>
+      <ul id="collections" class="list"></ul>
+      <form id="new-collection" class="stack">
+        <label for="collection-name">New collection</label>
+        <input id="collection-name" name="name" required maxlength="120" placeholder="e.g. HR policies">
+        <button type="submit">Create</button>
+      </form>
+    </aside>
+
+    <section class="panel" aria-labelledby="documents-heading">
+      <h2 id="documents-heading">Documents <span id="collection-title" class="muted"></span></h2>
+      <form id="upload" class="row">
+        <label class="sr-only" for="file">File</label>
+        <input id="file" name="file" type="file" accept=".txt,.md,.pdf" required>
+        <button type="submit">Upload</button>
+      </form>
+      <p class="muted small">Text, Markdown or text-based PDF, up to 5 MB.</p>
+      <ul id="documents" class="list"></ul>
+    </section>
+
+    <section class="panel wide" aria-labelledby="ask-heading">
+      <h2 id="ask-heading">Ask</h2>
+      <form id="ask" class="row">
+        <label class="sr-only" for="question">Question</label>
+        <input id="question" name="question" required maxlength="2000" placeholder="How many days of annual leave do I get?">
+        <button type="submit">Ask</button>
+      </form>
+      <div id="status" role="status" class="muted"></div>
+      <article id="answer" hidden>
+        <p id="answer-text"></p>
+        <p id="answer-meta" class="muted small"></p>
+        <h3>Sources</h3>
+        <ol id="sources" class="sources"></ol>
+      </article>
+    </section>
+  </main>
+
+  <script src="{% static 'knowledge/app.js' %}" type="module"></script>
+</body>
+</html>
